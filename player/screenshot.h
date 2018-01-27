@@ -42,6 +42,10 @@ void screenshot_to_file(struct MPContext *mpctx, const char *filename, int mode,
 // mode is the same as in screenshot_request()
 struct mp_image *screenshot_get_rgb(struct MPContext *mpctx, int mode);
 
+// mode, osd is the same as in screenshot_request()
+void screenshot_to_clipboard(struct MPContext *mpctx, int mode, bool osd, 
+                             bool async);
+
 // Called by the playback core code when a new frame is displayed.
 void screenshot_flip(struct MPContext *mpctx);
 

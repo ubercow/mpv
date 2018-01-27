@@ -128,6 +128,11 @@ const struct mp_cmd_def mp_cmds[] = {
                       {"window", 1},
                       {"subtitles", 2})),
   }},
+  { MP_CMD_SCREENSHOT_TO_CLIPBOARD, "screenshot-to-clipboard", {
+      OARG_CHOICE(2, ({"video", 0},
+                      {"window", 1},
+                      {"subtitles", 2})),
+  }},
   { MP_CMD_SCREENSHOT_RAW, "screenshot-raw", {
       OARG_CHOICE(2, ({"video", 0},
                       {"window", 1},

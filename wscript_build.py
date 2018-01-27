@@ -452,6 +452,8 @@ def build(ctx):
         ( "video/out/drm_common.c",              "drm" ),
 
         ## osdep
+        ( "osdep/clipboard-macosx.m",            "cocoa" ),
+        
         ( getch2_c ),
         ( "osdep/io.c" ),
         ( "osdep/timer.c" ),

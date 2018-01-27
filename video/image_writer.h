@@ -15,6 +15,9 @@
  * License along with mpv.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef MP_IMAGE_WRITER_H
+#define MP_IMAGE_WRITER_H
+
 #include "options/m_option.h"
 
 struct mp_image;
@@ -66,3 +69,5 @@ struct mp_image *convert_image(struct mp_image *image, int destfmt,
 
 // Debugging helper.
 void dump_png(struct mp_image *image, const char *filename, struct mp_log *log);
+
+#endif

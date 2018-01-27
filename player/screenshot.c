@@ -39,6 +39,8 @@
 #include "video/image_writer.h"
 #include "sub/osd.h"
 
+#include "osdep/clipboard.h"
+
 #include "video/csputils.h"
 
 #define MODE_FULL_WINDOW 1
@@ -449,6 +451,25 @@ void screenshot_to_file(struct MPContext *mpctx, const char *filename, int mode,
     }
     write_screenshot(mpctx, image, filename, &opts, async);
     talloc_free(image);
+
+end:
+    ctx->osd = old_osd;
+}
+
+void screenshot_to_clipboard(struct MPContext *mpctx, int mode, bool osd,
+                             bool async)
+{
+    screenshot_ctx *ctx = mpctx->screenshot_ctx;
+    bool old_osd = ctx->osd;
+    ctx->osd = osd;
+
+    struct mp_image *mpi = screenshot_get(mpctx, mode);
+    if (!mpi) {
+        screenshot_msg(ctx, MSGL_ERR, "Taking screenshot failed.");
+        goto end;
+    }
+
+    mp_clipboard_write_image(mpi, mpctx->log);
 
 end:
     ctx->osd = old_osd;

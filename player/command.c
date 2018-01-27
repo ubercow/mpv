@@ -5396,6 +5396,11 @@ int run_command(struct MPContext *mpctx, struct mp_cmd *cmd, struct mpv_node *re
         break;
     }
 
+    case MP_CMD_SCREENSHOT_TO_CLIPBOARD: {
+        screenshot_to_clipboard(mpctx, cmd->args[0].v.i, msg_osd, async);
+        break;
+    }
+
     case MP_CMD_SCREENSHOT_TO_FILE:
         screenshot_to_file(mpctx, cmd->args[0].v.s, cmd->args[1].v.i, msg_osd,
                            async);
